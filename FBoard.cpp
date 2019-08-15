@@ -188,4 +188,21 @@ bool FBoard::moveX(int rowFrom, int colFrom, int rowTo, int colTo)
     {
         return false;
     }
+    else
+    {
+        positionTracker[rowTo][colTo] = 'x';
+        positionTracker[rowFrom][colFrom] = 'E';
+        return true;
+    }
 }
+
+/*******************************************************************************
+    FBoard::moveX
+    Takes the row and column of the square x is moving from and the row and
+    column to which x will move. If the desired move is not allowed, or if the 
+    game has already been won, it returns false.
+    Otherwise, it makes the move and returns true. "x" can move 1 square
+    diagonally in any direction. A piece is not allowed to move off the board or
+    to an occupied square. If x's move is to square (7,7), the gameState is 
+    changed to X_WON
+*******************************************************************************/
