@@ -42,6 +42,7 @@ private:
     bool isValidMove(int, int, int, int);
     bool checkIfEmpty(int, int);
     bool checkXDiagonal(int, int, int, int);
+    bool checkInRange(int, int);
 
 public:
     FBoard();

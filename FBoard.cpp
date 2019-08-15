@@ -99,6 +99,30 @@ bool FBoard::checkXDiagonal(int rowFrom, int colFrom, int rowTo, int colTo)
 }
 
 /*******************************************************************************
+    FBoard::checkInRange
+    Takes a row and column and checks if the move is within the bounds of the 
+    board. If the move is inbounds, it returns true. Otherwise, it returns false
+*******************************************************************************/
+bool FBoard::checkInRange(int rowTo, int colTo)
+{
+    // check if too far right or down
+    if (rowTo > 7 || colTo > 7)
+    {
+        return false;
+    }
+    // check if too far left or up
+    else if (rowTo < 0 || colTo < 0)
+    {
+        return false;
+    }
+    else 
+    {
+        return true;
+    }
+}
+
+
+/*******************************************************************************
     FBoard::isValidMove
     Takes the row and column of the square x is moving from and the row and
     column to which x will move and determines whether that move is legal.
@@ -116,6 +140,10 @@ bool FBoard::isValidMove(int rowFrom, int colFrom, int rowTo, int colTo)
         return false;
     }
     else if (!checkXDiagonal(rowFrom, colFrom, rowTo, colTo))
+    {
+        return false;
+    }
+    else if (!checkInRange(rowTo, colTo))
     {
         return false;
     }
