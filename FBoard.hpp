@@ -39,6 +39,9 @@ private:
     PossibleGameStates gameState;
     int xPosition[2];
     void initializeEmptyBoard();
+    bool isValidMove(int, int, int, int);
+    bool checkIfEmpty(int, int);
+    bool checkXDiagonal(int, int, int, int);
 
 public:
     FBoard();
