@@ -39,10 +39,11 @@ private:
     PossibleGameStates gameState;
     int xPosition[2];
     void initializeEmptyBoard();
-    bool isValidMove(int, int, int, int);
+    bool isValidXMove(int, int, int, int);
     bool checkIfEmpty(int, int);
     bool checkXDiagonal(int, int, int, int);
     bool checkInRange(int, int);
+    bool checkGameState();
 
 public:
     FBoard();

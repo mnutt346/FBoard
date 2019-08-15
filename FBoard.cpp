@@ -115,27 +115,46 @@ bool FBoard::checkInRange(int rowTo, int colTo)
     {
         return false;
     }
-    else 
+    else
     {
         return true;
     }
 }
 
+/*******************************************************************************
+    FBoard::checkGameState
+    Checks if the game state is not unfinished. If the game is unfinished, it
+    returns true. Otherwise, it returns false.
+*******************************************************************************/
+bool FBoard::checkGameState()
+{
+    if (gameState != UNFINISHED)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 
 /*******************************************************************************
     FBoard::isValidMove
     Takes the row and column of the square x is moving from and the row and
     column to which x will move and determines whether that move is legal.
     If the move is illegal, isValidMove returns false. Otherwise it returns true
-    "x" can move 1 square
-    diagonally in any direction. A piece is not allowed to move off the board or
-    to an occupied square.
+    "x" can move 1 square diagonally in any direction. 
+    A piece is not allowed to move off the board or to an occupied square.
 *******************************************************************************/
-bool FBoard::isValidMove(int rowFrom, int colFrom, int rowTo, int colTo)
+bool FBoard::isValidXMove(int rowFrom, int colFrom, int rowTo, int colTo)
 {
     bool isValid = true;
 
-    if (!checkIfEmpty(rowTo, colTo))
+    if (!checkGameState())
+    {
+        return false;
+    }
+    else if (!checkIfEmpty(rowTo, colTo))
     {
         return false;
     }
@@ -146,6 +165,10 @@ bool FBoard::isValidMove(int rowFrom, int colFrom, int rowTo, int colTo)
     else if (!checkInRange(rowTo, colTo))
     {
         return false;
+    }
+    else
+    {
+        return true;
     }
 }
 
@@ -159,6 +182,10 @@ bool FBoard::isValidMove(int rowFrom, int colFrom, int rowTo, int colTo)
     to an occupied square. If x's move is to square (7,7), the gameState is 
     changed to X_WON
 *******************************************************************************/
-// bool FBoard::moveX(int rowFrom, int colFrom, int rowTo, int colTo)
-// {
-// }
+bool FBoard::moveX(int rowFrom, int colFrom, int rowTo, int colTo)
+{
+    if (!isValidXMove(rowFrom, colFrom, rowTo, colTo))
+    {
+        return false;
+    }
+}
