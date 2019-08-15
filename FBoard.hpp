@@ -33,11 +33,15 @@ enum PossibleGameStates
 class FBoard
 {
 private:
+    const int ROW_COUNT = 8;
+    const int COL_COUNT = 8;
     char positionTracker[8][8];
     PossibleGameStates gameState;
     int xPosition[2];
+    void initializeEmptyBoard();
 
 public:
+    FBoard();
     PossibleGameStates getGameState();
     bool moveX(int, int, int, int);
     bool moveO(int, int, int, int);
