@@ -39,16 +39,20 @@ private:
     PossibleGameStates gameState;
     int xPosition[2];
     void initializeEmptyBoard();
-    bool isValidXMove(int, int, int, int);
+    bool isValidXMove(int, int);
+    bool isValidOMove(int, int, int, int);
     bool checkIfEmpty(int, int);
-    bool checkXDiagonal(int, int, int, int);
+    bool checkXDiagonal(int, int);
+    bool checkODiagonal(int, int, int, int);
     bool checkInRange(int, int);
     bool checkGameState();
+    bool checkRemainingXMoves();
+    void checkForWinner();
 
 public:
     FBoard();
     PossibleGameStates getGameState();
-    bool moveX(int, int, int, int);
+    bool moveX(int, int);
     bool moveO(int, int, int, int);
 };
 
