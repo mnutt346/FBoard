@@ -337,6 +337,7 @@ bool FBoard::moveO(int rowFrom, int colFrom, int rowTo, int colTo)
     else
     {
         positionTracker[rowTo][colTo] = 'o';
+        positionTracker[rowFrom][colFrom] = 'E';
         checkForWinner();
         return true;
     }
